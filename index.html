@@ -1,96 +1,395 @@
-=！doctype=html后膜编号
-<超文本标记语言 朗="zh-CN">
-<头>
-    <元 字符集="UTF-8">
-    <元 姓名="视口" 内容="宽度=设备宽度，初始比例=1.0，用户可缩放=无">
-    <标题>多模板信息管理系统（修复版）</标题>
-    <风格>
-* {边缘: 0;填充: 0;箱体尺寸: 边框框;}
-身体{字体系列："微软雅黑"，Arial，无衬线；溢出：隐藏的；高度：100VH；背景：#f5f5f5；}
-@介质 屏幕和(最大宽度：1200px){
-.布局{改变：规模(0.6)；转化源：顶端左；宽度：1920px！重要；高度：1080px！重要；溢出：自动；}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>多模板信息管理系统（修复版）</title>
+    <style>
+        * {margin: 0;padding: 0;box-sizing: border-box;}
+        body {font-family: "微软雅黑", Arial, sans-serif;overflow: hidden;height: 100vh;background: #f5f5f5;}
+        @media screen and (max-width: 1200px) {
+            .layout {transform: scale(0.6);transform-origin: top left;width: 1920px !important;height: 1080px !important;overflow: auto;}
         }
-.布局{显示：弯曲；高度：100VH；差距：10px；填充：10px；}
-.侧边栏{宽度：220PX；背景：#2c3e50；颜色：#FFF；填充：20px；边界半径：8px；箱形阴影：008px RGBA(0,0,0,0.1);溢流y：自动；}
-.侧边栏H2{文本对齐：中心；底边距：20px；字体大小：18px；垫底：10px；下边框：1PX固体#34495e；}
-.提要栏提示{字体大小：12PX；颜色：#CCC；文本对齐：中心；底边距：15PX；}
-.菜单项{填充：12px15px；边缘：8px0；边界半径：4PX；光标：抓住；过渡：0.3s；用户选择：没有一个；背景：#34495e；}
-.菜单项.活跃的{背景：#3498db；颜色：#FFF；}
-.菜单项：盘旋{背景：#4a6583；}
-.菜单项:活跃的{光标: 抓取;}
-.内容{弯曲：1；背景：#FFF；填充：20px；边界半径：8px；箱形阴影：08px RGBA(0,0,0,0.1);溢流y：自动；高度：100VH；}
-.模板 {显示: 没有一个;}
-.模板.显示 {显示: 块;}
-.模板H3{底边距：15px；颜色：#2c3e50；字体大小：20px；下边框：2px固体#3498db；垫底：8px；}
-.注意，.络血盒{背景：#fff3cd；边界：1PX固体#ffebea；填充：15px；边界半径：6px；底边距：20px；颜色：#856404；字体大小：16px；文本对齐：中心；字体粗细：600；}
-.func-bar{显示：弯曲；差距：10px；底边距：15px；}
-.func-btn{填充：8px16px；边境：没有一个；边界半径：4PX；颜色：#FFF；光标：指针；背景：#007bff；}
-.clear-btn{背景：#dc3545；}
-桌子{宽度：100%；边界折叠：倒塌；边缘：15px0；背景：#FFF；箱形阴影：005px RGBA(0,0,0,0.05);}
-th，TD{填充：10px12px；边界：1PX固体#e9ecef；文本对齐：左；}
-th{背景：#3498db；颜色：#FFF；字体粗细：600；字体大小：14px；}
-TR：第n个孩子(甚至){背景：#f8f9fa；}
-TD输入{宽度：100%；填充：6px；边界：1PX固体#dee2e6；边界半径：4PX；概要：没有一个；字体大小：13PX；}
-.车台 {宽度: 100%;}
-.站台TR TD：第一个孩子{宽度：30%；字体粗细：600；背景：#f8f9fa；}
-.户口表TD IMG{最大宽度：150px；高度：自动；边界：1PX固体#ddd；填充：5px；边界半径：4PX；}
-    </风格>
-</头>
-<身体>
-    <div 班级="布局">
-        <div 班级="侧边栏">
-            <H2>信息模板导航</H2>
-            <div 班级="提要栏提示">长按拖拽调整顺序</div>
-            <div 班级="菜单-列表" 身份标识="menuList">
-                <div 班级="菜单项激活" onClick="switchTemplate('car1')" 可拖动的="真">车辆信息模板1(闽A)</div>
-                <div 班级="菜单项" onClick="switchTemplate('医疗')" 可拖动的="真">医保信息模板</div>
-                <div 班级="菜单项" onClick="switchTemplate('交易')" 可拖动的="真">交易记录模板</div>
-                <div 班级="菜单项" onClick="switchTemplate('car2')" 可拖动的="真">车辆信息模板2(苏C)</div>
-                <div 班级="菜单项" onClick="switchTemplate(‘户口’)" 可拖动的="真">户籍信息模板</div>
-                <div 班级="菜单项" onClick="switchTemplate(“络血”)" 可拖动的="真">罗雪的一句话</div>
+        .layout {display: flex;height: 100vh;gap: 10px;padding: 10px;}
+        .sidebar {width: 220px;background: #2c3e50;color: #fff;padding: 20px;border-radius: 8px;box-shadow: 0 0 8px rgba(0,0,0,0.1);overflow-y: auto;}
+        .sidebar h2 {text-align: center;margin-bottom: 20px;font-size: 18px;padding-bottom: 10px;border-bottom: 1px solid #34495e;}
+        .sidebar-tips{font-size:12px;color:#ccc;text-align:center;margin-bottom:15px;}
+        .menu-item {padding: 12px 15px;margin: 8px 0;border-radius: 4px;cursor: grab;transition: 0.3s;user-select: none;background:#34495e;}
+        .menu-item.active {background: #3498db;color: #fff;}
+        .menu-item:hover {background: #4a6583;}
+        .menu-item:active{cursor: grabbing;}
+        .content {flex: 1;background: #fff;padding: 20px;border-radius: 8px;box-shadow: 0 0 8px rgba(0,0,0,0.1);overflow-y: auto;height: 100vh;}
+        .template {display: none;}
+        .template.show {display: block;}
+        .template h3 {margin-bottom: 15px;color: #2c3e50;font-size: 20px;border-bottom: 2px solid #3498db;padding-bottom: 8px;}
+        .notice,.luoxue-box {background: #fff3cd;border: 1px solid #ffeeba;padding: 15px;border-radius: 6px;margin-bottom: 20px;color: #856404;font-size: 16px;text-align: center;font-weight: 600;}
+        .func-bar{display:flex;gap:10px;margin-bottom:15px;}
+        .func-btn{padding:8px 16px;border:none;border-radius:4px;color:#fff;cursor:pointer;background:#007bff;}
+        .clear-btn{background:#dc3545;}
+        table {width: 100%;border-collapse: collapse;margin: 15px 0;background: #fff;box-shadow: 0 0 5px rgba(0,0,0,0.05);}
+        th, td {padding: 10px 12px;border: 1px solid #e9ecef;text-align: left;}
+        th {background: #3498db;color: #fff;font-weight: 600;font-size: 14px;}
+        tr:nth-child(even) {background: #f8f9fa;}
+        td input {width: 100%;padding: 6px;border: 1px solid #dee2e6;border-radius: 4px;outline: none;font-size: 13px;}
+        .car-table {width: 100%;}
+        .car-table tr td:first-child {width: 30%;font-weight: 600;background: #f8f9fa;}
+        .hukou-table td img {max-width: 150px;height: auto;border: 1px solid #ddd;padding: 5px;border-radius: 4px;}
+    </style>
+</head>
+<body>
+    <div class="layout">
+        <div class="sidebar">
+            <h2>信息模板导航</h2>
+            <div class="sidebar-tips">长按拖拽调整顺序</div>
+            <div class="menu-list" id="menuList">
+                <div class="menu-item active" onclick="switchTemplate('car1')" draggable="true">车辆信息模板1（闽A）</div>
+                <div class="menu-item" onclick="switchTemplate('medical')" draggable="true">医保信息模板</div>
+                <div class="menu-item" onclick="switchTemplate('trade')" draggable="true">交易记录模板</div>
+                <div class="menu-item" onclick="switchTemplate('car2')" draggable="true">车辆信息模板2（苏C）</div>
+                <div class="menu-item" onclick="switchTemplate('hukou')" draggable="true">户籍信息模板</div>
+                <div class="menu-item" onclick="switchTemplate('luoxue')" draggable="true">罗雪的一句话</div>
             </div>
         </div>
 
-        <div 班级="内容">
-            <div 班级="功能栏">
-                <按钮 班级="func-btn" onClick="refreshPage()">刷新页面</按钮>
-                <按钮 班级="func-btn clear-btn" onClick="clearAllData()">一键清空所有模板数据</按钮>
+        <div class="content">
+            <div class="func-bar">
+                <button class="func-btn" onclick="refreshPage()">刷新页面</button>
+                <button class="func-btn clear-btn" onclick="clearAllData()">一键清空所有模板数据</button>
             </div>
 
-            <！--模板1闽A车辆-->
-            <div 班级="模板显示" 身份标识="car1">
-                <H3>车辆信息模板（闽A5713C)</H3>
-                <桌子 班级="车载台">
-                    <T车身>
-                        <TR><TD>所有人</TD><TD><输入 类型="文本" 价值="朱世荣"></TD></TR>
-                        <TR><TD>身份证明名称</TD><TD><输入 类型="文本" 价值="居民身份证"></TD></TR>
-                        <TR><TD>身份证明号码</TD><TD><输入 类型="文本" 价值="370830199110173911"></TD></TR>
-                        <TR><TD>手机号码</TD><TD><输入 类型="文本" 价值="18305982623"></TD></TR>
-                        <TR><TD>登记证书编号</TD><TD><输入 类型="文本" 价值="350018201128"></TD></TR>
-                        <TR><TD>更新日期</TD><TD><输入 类型="文本" 价值="2025-01-06"></TD></TR>
-                        <TR><TD>发证机关</TD><TD><输入 类型="文本" 价值="闽A"></TD></TR>
-                        <TR><TD>机动车状态</TD><TD><输入 类型="文本" 价值="正常"></TD></TR>
-                        <TR><TD>车身颜色</TD><TD><输入 类型="文本" 价值="黑"></TD></TR>
-                        <TR><TD>使用性质</TD><TD><输入 类型="文本" 价值="非营运"></TD></TR>
-                        <TR><TD>住址</TD><TD><输入 类型="文本" 价值="福建省闽侯县南屿镇麓南大道556号南港花园25号楼1811单元"></TD></TR>
-                        <TR><TD>厂牌型号</TD><TD><输入 类型="文本" 价值="宝马牌/BMW7201PN"></TD></TR>
-                        <TR><TD>车辆类型</TD><TD><输入 类型="文本" 价值="小型轿车"></TD></TR>
-                        <TR><TD>获得方式</TD><TD><输入 类型="文本" 价值="购买"></TD></TR>
-                        <TR><TD>所有权</TD><TD><输入 类型="文本" 价值="个人"></TD></TR>
-                        <TR><TD>发动机号</TD><TD><输入 类型="文本" 价值="A027E163"></TD></TR>
-                        <TR><TD>车辆识别代号</TD><TD><输入 类型="文本" 价值="LBV61AF08MSZ17506"></TD></TR>
-                        <TR><TD>初次登记日期</TD><TD><输入 类型="文本" 价值="2021-01-07"></TD></TR>
-                        <TR><TD>发证日期</TD><TD><输入 类型="文本" 价值="2021-01-07"></TD></TR>
-                        <TR><TD>检验有效期止</TD><TD><输入 类型="文本" 价值="2027-01-31"></TD></TR>
-                        <TR><TD>保险终止日期</TD><TD><输入 类型="文本" 价值="2022-01-05"></TD></TR>
-                        <TR><TD>强制报废期止</TD><TD><输入 类型="文本" 价值="2099-12-31"></TD></TR>
-                        <TR><TD>逾期检验强制报废期止</TD><TD><输入 类型="文本" 价值="2032-01-31"></TD></TR>
-                        <TR><TD>最近定检日期</TD><TD><输入 类型="文本" 价值="2025-01-06"></TD></TR>
-                        <TR><TD>补领号牌次数</TD><TD><输入 类型="文本" 价值="0"></TD></TR>
-                        <TR><TD>行驶证证芯编号</TD><TD><输入 类型="文本" 价值="3500018852128"></TD></TR>
-                        <TR><TD>检验合格标志</TD><TD><输入 类型="文本" 价值="273501054371"></TD></TR>
-                        <TR><TD>补证次数</TD><TD><输入 类型="文本" 价值="0"></TD></TR>
-                        <TR><TD>补/换领证书次数</TD><TD><输入 类型="文本" 价值="0"></TD></TR>
-                        <TR><TD>前膜编号</TD><TD><输入 类型="文本" 价值="3541013263297"></TD></TR>
-                        <TR><TD>后膜编号</TD><TD><输入 类型="文本" 价值="3561013263296"></TD></TR>
-      
+            <!-- 模板1 闽A车辆 -->
+            <div class="template show" id="car1">
+                <h3>车辆信息模板（闽A5713C）</h3>
+                <table class="car-table">
+                    <tbody>
+                        <tr><td>所有人</td><td><input type="text" value="朱世荣"></td></tr>
+                        <tr><td>身份证明名称</td><td><input type="text" value="居民身份证"></td></tr>
+                        <tr><td>身份证明号码</td><td><input type="text" value="370830199110173911"></td></tr>
+                        <tr><td>手机号码</td><td><input type="text" value="18305982623"></td></tr>
+                        <tr><td>登记证书编号</td><td><input type="text" value="350018201128"></td></tr>
+                        <tr><td>更新日期</td><td><input type="text" value="2025-01-06"></td></tr>
+                        <tr><td>发证机关</td><td><input type="text" value="闽A"></td></tr>
+                        <tr><td>机动车状态</td><td><input type="text" value="正常"></td></tr>
+                        <tr><td>车身颜色</td><td><input type="text" value="黑"></td></tr>
+                        <tr><td>使用性质</td><td><input type="text" value="非营运"></td></tr>
+                        <tr><td>住址</td><td><input type="text" value="福建省闽侯县南屿镇麓南大道556号南港花园25号楼1811单元"></td></tr>
+                        <tr><td>厂牌型号</td><td><input type="text" value="宝马牌/BMW7201PN"></td></tr>
+                        <tr><td>车辆类型</td><td><input type="text" value="小型轿车"></td></tr>
+                        <tr><td>获得方式</td><td><input type="text" value="购买"></td></tr>
+                        <tr><td>所有权</td><td><input type="text" value="个人"></td></tr>
+                        <tr><td>发动机号</td><td><input type="text" value="A027E163"></td></tr>
+                        <tr><td>车辆识别代号</td><td><input type="text" value="LBV61AF08MSZ17506"></td></tr>
+                        <tr><td>初次登记日期</td><td><input type="text" value="2021-01-07"></td></tr>
+                        <tr><td>发证日期</td><td><input type="text" value="2021-01-07"></td></tr>
+                        <tr><td>检验有效期止</td><td><input type="text" value="2027-01-31"></td></tr>
+                        <tr><td>保险终止日期</td><td><input type="text" value="2022-01-05"></td></tr>
+                        <tr><td>强制报废期止</td><td><input type="text" value="2099-12-31"></td></tr>
+                        <tr><td>逾期检验强制报废期止</td><td><input type="text" value="2032-01-31"></td></tr>
+                        <tr><td>最近定检日期</td><td><input type="text" value="2025-01-06"></td></tr>
+                        <tr><td>补领号牌次数</td><td><input type="text" value="0"></td></tr>
+                        <tr><td>行驶证证芯编号</td><td><input type="text" value="3500018852128"></td></tr>
+                        <tr><td>检验合格标志</td><td><input type="text" value="273501054371"></td></tr>
+                        <tr><td>补证次数</td><td><input type="text" value="0"></td></tr>
+                        <tr><td>补/换领证书次数</td><td><input type="text" value="0"></td></tr>
+                        <tr><td>前膜编号</td><td><input type="text" value="3541013263297"></td></tr>
+                        <tr><td>后膜编号</td><td><input type="text" value="3561013263296"></td></tr>
+                        <tr><td>发动机型号</td><td><input type="text" value="B48B20D"></td></tr>
+                        <tr><td>燃料类型</td><td><input type="text" value="汽油"></td></tr>
+                        <tr><td>钢板弹簧片数</td><td><input type="text" value="--"></td></tr>
+                        <tr><td>车外廓长宽高</td><td><input type="text" value="5106/ 1868/1500/"></td></tr>
+                        <tr><td>排量</td><td><input type="text" value="1998"></td></tr>
+                        <tr><td>功率</td><td><input type="text" value="206"></td></tr>
+                        <tr><td>总质量</td><td><input type="text" value="2260"></td></tr>
+                        <tr><td>核定载质量</td><td><input type="text" value="--"></td></tr>
+                        <tr><td>准牵引总质量</td><td><input type="text" value="--"></td></tr>
+                        <tr><td>核定载客</td><td><input type="text" value="5"></td></tr>
+                        <tr><td>前排载客</td><td><input type="text" value="--"></td></tr>
+                        <tr><td>后排载客</td><td><input type="text" value="--"></td></tr>
+                        <tr><td>轮胎规格</td><td><input type="text" value="245/40 R19/275/35R19"></td></tr>
+                        <tr><td>出厂日期</td><td><input type="text" value="2020-12-09"></td></tr>
+                        <tr><td>是否新能源汽车</td><td><input type="text" value="否"></td></tr>
+                        <tr><td>新能源汽车种类</td><td><input type="text" value="--"></td></tr>
+                        <tr><td>尾板质量</td><td><input type="text" value="--"></td></tr>
+                        <tr><td>销售单位</td><td><input type="text" value="--"></td></tr>
+                        <tr><td>来历凭证</td><td><input type="text" value="--"></td></tr>
+                        <tr><td>抵押情况</td><td><input type="text" value="已抵押"></td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- 模板2 医保 -->
+            <div class="template" id="medical">
+                <h3>医保信息模板</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th><input type="text" value="序号"></th>
+                            <th><input type="text" value="医保区划"></th>
+                            <th><input type="text" value="险种类型"></th>
+                            <th><input type="text" value="人员编号"></th>
+                            <th><input type="text" value="单位编号"></th>
+                            <th><input type="text" value="单位名称"></th>
+                            <th><input type="text" value="缴费标志"></th>
+                            <th><input type="text" value="对应期起始"></th>
+                            <th><input type="text" value="款所属期起始"></th>
+                            <th><input type="text" value="款所属期止"></th>
+                            <th><input type="text" value="核销标志"></th>
+                            <th><input type="text" value="征集标志"></th>
+                            <th><input type="text" value="人员参保关系ID"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="text" value="1"></td>
+                            <td><input type="text" value="北京市/海淀区"></td>
+                            <td><input type="text" value="城镇医疗费用"></td>
+                            <td><input type="text" value="1727938456"></td>
+                            <td><input type="text" value="####"></td>
+                            <td><input type="text" value="北京华清新拓节能技术股份公司"></td>
+                            <td><input type="text" value="足额缴纳"></td>
+                            <td><input type="text" value="202504"></td>
+                            <td><input type="text" value="202504"></td>
+                            <td><input type="text" value="202504"></td>
+                            <td><input type="text" value="正常记录"></td>
+                            <td><input type="text" value="是"></td>
+                            <td><input type="text" value="--"></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" value="2"></td>
+                            <td><input type="text" value="北京市/海淀区"></td>
+                            <td><input type="text" value="城镇基本医疗"></td>
+                            <td><input type="text" value="1727938456"></td>
+                            <td><input type="text" value="####"></td>
+                            <td><input type="text" value="北京华清新拓节能技术股份公司"></td>
+                            <td><input type="text" value="足额缴纳"></td>
+                            <td><input type="text" value="202503"></td>
+                            <td><input type="text" value="202503"></td>
+                            <td><input type="text" value="202503"></td>
+                            <td><input type="text" value="正常记录"></td>
+                            <td><input type="text" value="是"></td>
+                            <td><input type="text" value="--"></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" value="3"></td>
+                            <td><input type="text" value="北京市/海淀区"></td>
+                            <td><input type="text" value="城镇医疗费用"></td>
+                            <td><input type="text" value="1727938456"></td>
+                            <td><input type="text" value="####"></td>
+                            <td><input type="text" value="北京华清新拓节能技术股份公司"></td>
+                            <td><input type="text" value="足额缴纳"></td>
+                            <td><input type="text" value="202503"></td>
+                            <td><input type="text" value="202503"></td>
+                            <td><input type="text" value="202503"></td>
+                            <td><input type="text" value="正常记录"></td>
+                            <td><input type="text" value="是"></td>
+                            <td><input type="text" value="--"></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" value="4"></td>
+                            <td><input type="text" value="北京市/海淀区"></td>
+                            <td><input type="text" value="城镇基本医疗"></td>
+                            <td><input type="text" value="1727938456"></td>
+                            <td><input type="text" value="####"></td>
+                            <td><input type="text" value="北京华清新拓节能技术股份公司"></td>
+                            <td><input type="text" value="足额缴纳"></td>
+                            <td><input type="text" value="202502"></td>
+                            <td><input type="text" value="202502"></td>
+                            <td><input type="text" value="202502"></td>
+                            <td><input type="text" value="正常记录"></td>
+                            <td><input type="text" value="是"></td>
+                            <td><input type="text" value="--"></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" value="5"></td>
+                            <td><input type="text" value="北京市/海淀区"></td>
+                            <td><input type="text" value="城镇医疗费用"></td>
+                            <td><input type="text" value="1727938456"></td>
+                            <td><input type="text" value="####"></td>
+                            <td><input type="text" value="北京华清新拓节能技术股份公司"></td>
+                            <td><input type="text" value="足额缴纳"></td>
+                            <td><input type="text" value="202502"></td>
+                            <td><input type="text" value="202502"></td>
+                            <td><input type="text" value="202502"></td>
+                            <td><input type="text" value="正常记录"></td>
+                            <td><input type="text" value="是"></td>
+                            <td><input type="text" value="--"></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" value="30"></td>
+                            <td><input type="text" value="北京市/东城区"></td>
+                            <td><input type="text" value="城镇医疗费用"></td>
+                            <td><input type="text" value="1727938456"></td>
+                            <td><input type="text" value="####"></td>
+                            <td><input type="text" value="瀚华资本投资管理有限公司"></td>
+                            <td><input type="text" value="足额缴纳"></td>
+                            <td><input type="text" value="202406"></td>
+                            <td><input type="text" value="202406"></td>
+                            <td><input type="text" value="202406"></td>
+                            <td><input type="text" value="正常记录"></td>
+                            <td><input type="text" value="是"></td>
+                            <td><input type="text" value="--"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- 模板3 交易记录 -->
+            <div class="template" id="trade">
+                <h3>交易记录模板</h3>
+                <div class="notice">此内容只是模板实际开户请加群1039317693群内时不时会免费开户和送开户接口</div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th><input type="text" value="序号"></th>
+                            <th><input type="text" value="支付时间"></th>
+                            <th><input type="text" value="交易大类"></th>
+                            <th><input type="text" value="交易小类"></th>
+                            <th><input type="text" value="支付渠道"></th>
+                            <th><input type="text" value="收支类型"></th>
+                            <th><input type="text" value="交易金额（元）"></th>
+                            <th><input type="text" value="交易详情"></th>
+                            <th><input type="text" value="所属平台"></th>
+                            <th><input type="text" value="订单编号/备注"></th>
+                            <th><input type="text" value="交易场景"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><input value="1"></td><td><input value="2025-11-06 13:51:34"></td><td><input value="消费支出"></td><td><input value="医疗健康"></td><td><input value="线上支付"></td><td><input value="支出"></td><td><input value="33.40"></td><td><input value="信泽康医疗器械"></td><td><input value="美团"></td><td><input value="251106110040001"></td><td><input value="健康医疗"></td></tr>
+                        <tr><td><input value="2"></td><td><input value="2025-11-06 10:02:29"></td><td><input value="消费支出"></td><td><input value="保健滋补"></td><td><input value="线上支付"></td><td><input value="支出"></td><td><input value="329.99"></td><td><input value="自然之宝褪黑素"></td><td><input value="电商"></td><td><input value="-"></td><td><input value="健康保健"></td></tr>
+                        <tr><td><input value="3"></td><td><input value="2025-11-06 05:28:21"></td><td><input value="收益收入"></td><td><input value="理财收益"></td><td><input value="自动发放"></td><td><input value="收入"></td><td><input value="0.01"></td><td><input value="余额宝收益"></td><td><input value="余额宝"></td><td><input value="2025.11.05"></td><td><input value="理财增值"></td></tr>
+                        <tr><td><input value="4"></td><td><input value="2025-11-05 19:34:19"></td><td><input value="退款收入"></td><td><input value="电商退款"></td><td><input value="自动退款"></td><td><input value="收入"></td><td><input value="33.80"></td><td><input value="棉拖鞋退货"></td><td><input value="电商"></td><td><input value="-"></td><td><input value="购物售后"></td></tr>
+                        <tr><td><input value="5"></td><td><input value="2025-11-05 19:33:59"></td><td><input value="消费支出"></td><td><input value="鞋靴配饰"></td><td><input value="线上支付"></td><td><input value="支出"></td><td><input value="66.30"></td><td><input value="保暖棉拖鞋"></td><td><input value="电商"></td><td><input value="-"></td><td><input value="日常购物"></td></tr>
+                        <tr><td><input value="6"></td><td><input value="2025-11-05 19:28:11"></td><td><input value="消费支出"></td><td><input value="鞋靴配饰"></td><td><input value="线上支付"></td><td><input value="支出"></td><td><input value="33.80"></td><td><input value="防滑毛拖鞋"></td><td><input value="电商"></td><td><input value="-"></td><td><input value="日常购物"></td></tr>
+                        <tr><td><input value="7"></td><td><input value="2025-11-05 05:28:21"></td><td><input value="收益收入"></td><td><input value="理财收益"></td><td><input value="自动发放"></td><td><input value="收入"></td><td><input value="0.01"></td><td><input value="余额宝收益"></td><td><input value="余额宝"></td><td><input value="2025.11.04"></td><td><input value="理财增值"></td></tr>
+                        <tr><td><input value="8"></td><td><input value="2025-11-04 23:47:29"></td><td><input value="消费支出"></td><td><input value="生活缴费"></td><td><input value="线上支付"></td><td><input value="支出"></td><td><input value="2000.00"></td><td><input value="小区电费"></td><td><input value="缴费平台"></td><td><input value="-"></td><td><input value="生活缴费"></td></tr>
+                        <tr><td><input value="9"></td><td><input value="2025-11-04 18:20:44"></td><td><input value="消费支出"></td><td><input value="服饰配件"></td><td><input value="线上支付"></td><td><input value="支出"></td><td><input value="426.60"></td><td><input value="羊绒披肩围巾"></td><td><input value="电商"></td><td><input value="-"></td><td><input value="日常购物"></td></tr>
+                        <tr><td><input value="10"></td><td><input value="2025-11-04 18:17:44"></td><td><input value="消费支出"></td><td><input value="防疫用品"></td><td><input value="线上支付"></td><td><input value="支出"></td><td><input value="25.80"></td><td><input value="医用酒精"></td><td><input value="电商"></td><td><input value="-"></td><td><input value="防疫防护"></td></tr>
+                        <tr><td><input value="11"></td><td><input value="2025-11-04 05:44:54"></td><td><input value="收益收入"></td><td><input value="理财收益"></td><td><input value="自动发放"></td><td><input value="收入"></td><td><input value="0.02"></td><td><input value="余额宝收益"></td><td><input value="余额宝"></td><td><input value="2025.11.03"></td><td><input value="理财增值"></td></tr>
+                        <tr><td><input value="12"></td><td><input value="2025-11-04 01:30:37"></td><td><input value="消费支出"></td><td><input value="休闲零食"></td><td><input value="线上支付"></td><td><input value="支出"></td><td><input value="25.50"></td><td><input value="张飞牛肉丝"></td><td><input value="电商"></td><td><input value="-"></td><td><input value="食品消费"></td></tr>
+                        <tr><td><input value="13"></td><td><input value="2025-11-04 01:29:35"></td><td><input value="消费支出"></td><td><input value="休闲零食"></td><td><input value="线上支付"></td><td><input value="支出"></td><td><input value="78.70"></td><td><input value="周辣个苏麻辣"></td><td><input value="电商"></td><td><input value="长沙代购"></td><td><input value="食品消费"></td></tr>
+                        <tr><td><input value="14"></td><td><input value="2025-11-04 01:27:24"></td><td><input value="消费支出"></td><td><input value="粮油副食"></td><td><input value="线上支付"></td><td><input value="支出"></td><td><input value="16.50"></td><td><input value="香蒜木瓜丝"></td><td><input value="电商"></td><td><input value="500g"></td><td><input value="食品消费"></td></tr>
+                        <tr><td><input value="15"></td><td><input value="2025-11-03 23:01:32"></td><td><input value="消费支出"></td><td><input value="家居用品"></td><td><input value="线上支付"></td><td><input value="支出"></td><td><input value="1073.70"></td><td><input value="翻斗鞋柜"></td><td><input value="电商"></td><td><input value="优惠组合"></td><td><input value="家居采购"></td></tr>
+                        <tr><td><input value="16"></td><td><input value="2025-11-03 17:51:41"></td><td><input value="消费支出"></td><td><input value="家居用品"></td><td><input value="线上支付"></td><td><input value="支出"></td><td><input value="19.78"></td><td><input value="脸盆挂钩"></td><td><input value="电商"></td><td><input value="-"></td><td><input value="家居采购"></td></tr>
+                        <tr><td><input value="17"></td><td><input value="2025-11-03 17:24:55"></td><td><input value="退款收入"></td><td><input value="电商退款"></td><td><input value="自动退款"></td><td><input value="收入"></td><td><input value="36.86"></td><td><input value="防溅水垫退货"></td><td><input value="电商"></td><td><input value="-"></td><td><input value="购物售后"></td></tr>
+                        <tr><td><input value="18"></td><td><input value="2025-11-03 17:24:35"></td><td><input value="退款收入"></td><td><input value="电商退款"></td><td><input value="自动退款"></td><td><input value="收入"></td><td><input value="39.70"></td><td><input value="密封条退货"></td><td><input value="电商"></td><td><input value="-"></td><td><input value="购物售后"></td></tr>
+                        <tr><td><input value="19"></td><td><input value="2025-11-03 11:05:35"></td><td><input value="退款收入"></td><td><input value="电商退款"></td><td><input value="自动退款"></td><td><input value="收入"></td><td><input value="943.00"></td><td><input value="羊绒毛衣退货"></td><td><input value="电商"></td><td><input value="2025新款"></td><td><input value="购物售后"></td></tr>
+                        <tr><td><input value="20"></td><td><input value="2025-11-03 05:38:30"></td><td><input value="收益收入"></td><td><input value="理财收益"></td><td><input value="自动发放"></td><td><input value="收入"></td><td><input value="0.01"></td><td><input value="余额宝收益"></td><td><input value="余额宝"></td><td><input value="2025.11.02"></td><td><input value="理财增值"></td></tr>
+                        <tr><td><input value="21"></td><td><input value="2025-11-02 19:45:12"></td><td><input value="消费支出"></td><td><input value="美妆护肤"></td><td><input value="线上支付"></td><td><input value="支出"></td><td><input value="520.00"></td><td><input value="小棕瓶精华"></td><td><input value="电商"></td><td><input value="双11预售"></td><td><input value="美妆护肤"></td></tr>
+                        <tr><td><input value="22"></td><td><input value="2025-11-02 15:30:08"></td><td><input value="消费支出"></td><td><input value="数码产品"></td><td><input value="线上支付"></td><td><input value="支出"></td><td><input value="2999.00"></td><td><input value="AirPods Pro2"></td><td><input value="电商"></td><td><input value="官方店"></td><td><input value="数码采购"></td></tr>
+                        <tr><td><input value="23"></td><td><input value="2025-11-02 10:15:22"></td><td><input value="消费支出"></td><td><input value="餐饮美食"></td><td><input value="线上支付"></td><td><input value="支出"></td><td><input value="188.00"></td><td><input value="海底捞双人餐"></td><td><input value="美团"></td><td><input value="251102100040001"></td><td><input value="餐饮消费"></td></tr>
+                        <tr><td><input value="24"></td><td><input value="2025-11-01 22:08:45"></td><td><input value="消费支出"></td><td><input value="出行服务"></td><td><input value="线上支付"></td><td><input value="支出"></td><td><input value="68.00"></td><td><input value="滴滴专车"></td><td><input value="滴滴"></td><td><input value="D251101220845"></td><td><input value="出行服务"></td></tr>
+                        <tr><td><input value="25"></td><td><input value="2025-11-01 16:20:10"></td><td><input value="消费支出"></td><td><input value="图书音像"></td><td><input value="线上支付"></td><td><input value="支出"></td><td><input value="129.00"></td><td><input value="明朝那些事儿"></td><td><input value="电商"></td><td><input value="-"></td><td><input value="文化消费"></td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- 模板4 苏C车辆 -->
+            <div class="template" id="car2">
+                <h3>车辆信息模板（苏C51GJ8）</h3>
+                <table class="car-table">
+                    <tbody>
+                        <tr><td>号牌种类</td><td><input type="text" value="小型汽车"></td></tr>
+                        <tr><td>号牌号码</td><td><input type="text" value="苏C51GJ8"></td></tr>
+                        <tr><td>发证机关</td><td><input type="text" value="苏C"></td></tr>
+                        <tr><td>车辆品牌</td><td><input type="text" value="吉利牌"></td></tr>
+                        <tr><td>车辆识别代号</td><td><input type="text" value="LB3785224PS229169"></td></tr>
+                        <tr><td>车辆状态</td><td><input type="text" value="正常"></td></tr>
+                        <tr><td>证芯编号</td><td><input type="text" value="3210057327160"></td></tr>
+                        <tr><td>机动车所有人</td><td><input type="text" value="任嵘嵘"></td></tr>
+                        <tr><td>身份证明号码</td><td><input type="text" value="340604199401170025"></td></tr>
+                        <tr><td>联系电话</td><td><input type="text" value="18656175217"></td></tr>
+                        <tr><td>住所详细地址</td><td><input type="text" value="安徽省淮北市烈山区前岭矿南村6栋206号"></td></tr>
+                        <tr><td>车辆类型</td><td><input type="text" value="小型普通客车"></td></tr>
+                        <tr><td>使用性质</td><td><input type="text" value="非营运"></td></tr>
+                        <tr><td>车身颜色</td><td><input type="text" value="灰"></td></tr>
+                        <tr><td>初次登记日期</td><td><input type="text" value="2024-01-15"></td></tr>
+                        <tr><td>检验有效期止</td><td><input type="text" value="2026-01-31"></td></tr>
+                        <tr><td>号牌启用日期</td><td><input type="text" value="2024-01-15"></td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- 模板5 户籍 -->
+            <div class="template" id="hukou">
+                <h3>户籍信息模板</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th><input value="身份证号"></th><th><input value="姓名"></th><th><input value="性别"></th><th><input value="与户主关系"></th><th><input value="民族"></th><th><input value="户籍地址"></th><th><input value="社会关系"></th><th><input value="人员照片"></th>
+                        </tr>
+                    </thead>
+                    <tbody class="hukou-table">
+                        <tr><td><input value="44052719660624105X"></td><td><input value="庄汉民"></td><td><input value="男"></td><td><input value="长子"></td><td><input value="汉族"></td><td><input value="果陇村杭溪苏厝岭局23号"></td><td><input value="群众"></td><td rowspan="5"><img src="https://via.placeholder.com/150x200"></td></tr>
+                        <tr><td><input value="445281199507071040"></td><td><input value="庄丽婷"></td><td><input value="女"></td><td><input value="孙女"></td><td><input value="汉族"></td><td><input value="果陇村杭溪苏厝岭局23号"></td><td><input value="群众"></td></tr>
+                        <tr><td><input value="445281199611171041"></td><td><input value="庄丽丹"></td><td><input value="女"></td><td><input value="孙女"></td><td><input value="汉族"></td><td><input value="果陇村杭溪苏厝岭局23号"></td><td><input value="群众"></td></tr>
+                        <tr><td><input value="44052719320825103X"></td><td><input value="庄义学"></td><td><input value="男"></td><td><input value="户主"></td><td><input value="汉族"></td><td><input value="果陇村杭溪苏厝岭局23号"></td><td><input value="群众"></td></tr>
+                        <tr><td><input value="440527193606261022"></td><td><input value="李淑贤"></td><td><input value="女"></td><td><input value="配偶"></td><td><input value="汉族"></td><td><input value="果陇村杭溪苏厝岭局23号"></td><td><input value="群众"></td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- 模板6 罗雪的一句话 -->
+            <div class="template" id="luoxue">
+                <h3>罗雪的一句话</h3>
+                <div class="luoxue-box">此内容只是模板实际开户请加群1039317693群内时不时会免费开户和送开户接口</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 修复模板切换
+        function switchTemplate(templateId) {
+            document.querySelectorAll('.template').forEach(t => t.classList.remove('show'));
+            document.querySelectorAll('.menu-item').forEach(m => m.classList.remove('active'));
+            document.getElementById(templateId).classList.add('show');
+            event.target.classList.add('active');
+        }
+
+        // 修复一键清空
+        function clearAllData() {
+            if(confirm('确定清空所有模板数据？')){
+                document.querySelectorAll('td input').forEach(input => input.value = '');
+                alert('已清空所有数据！');
+            }
+        }
+
+        // 刷新页面
+        function refreshPage(){location.reload();}
+
+        // 修复拖拽排序（核心修复）
+        let dragItem = null;
+        const menuList = document.getElementById('menuList');
+        
+        menuList.addEventListener('dragstart', function(e){
+            dragItem = e.target;
+            setTimeout(() => e.target.style.opacity = '0.5', 0);
+        });
+        
+        menuList.addEventListener('dragend', function(e){
+            dragItem = null;
+            e.target.style.opacity = '1';
+        });
+        
+        menuList.addEventListener('dragover', function(e){
+            e.preventDefault();
+            const afterItem = getDragAfterElement(menuList, e.clientY);
+            const currentItem = dragItem;
+            if(afterItem == null){
+                menuList.appendChild(currentItem);
+            }else{
+                menuList.insertBefore(currentItem, afterItem);
+            }
+        });
+        
+        function getDragAfterElement(container, y){
+            const draggableElements = [...container.querySelectorAll('.menu-item:not(.dragging)')];
+            return draggableElements.reduce((closest, child) => {
+                const box = child.getBoundingClientRect();
+                const offset = y - box.top - box.height / 2;
+                if(offset < 0 && offset > closest.offset) return {offset: offset, element: child};
+                else return closest;
+            }, {offset: Number.NEGATIVE_INFINITY}).element;
+        }
+    </script>
+</body>
+</html>
